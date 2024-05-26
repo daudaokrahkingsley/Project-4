@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Count Analyzer</title>
+    <style>
+      body {
+        background-color: skyblue;
+        padding: 70px;
+      }
+      h1{
+        font-family: Arial, Helvetica, sans-serif;
+        
+      }
+    </style>
+  </head>
+
+  <center>
+  <body>
+    <h1>Word Count and Analyzer</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" accept=".txt" required />
+      <button type="submit">Generate</button>
+    </form>
+
+    {% if wordcloud_image %}
+    <h2>Word Cloud</h2>
+    <img src="{{ wordcloud_image }}" alt="Word Cloud" />
+
+    <h2>Word Count Results</h2>
+    <ul>
+      {% for word, freq in word_freq.items() %}
+      <li>{{ word }}: {{ freq }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </center>
+  </body>
+</html>
